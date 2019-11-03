@@ -68,7 +68,7 @@ public class ParkingControllerTest {
         assertThat(parkingResponse, notNullValue());
         assertThat(parkingResponse.getErrors(), nullValue());
         assertThat(parkingResponse.getWarnings(), notNullValue());
-        assertThat(parkingResponse.getWarnings(), hasItem(new ApiMessage("EMPTY_DATA", "There is no parks near to you," +
+        assertThat(parkingResponse.getWarnings(), hasItem(new ApiMessage("EMPTY_DATA", "There are no parks near you," +
                 " please update your zone distance")));
         assertThat(parkingResponse.getParks(), notNullValue());
         assertThat(parkingResponse.getParks(), empty());
@@ -84,7 +84,7 @@ public class ParkingControllerTest {
         assertThat(parkingResponse.getErrors(), nullValue());
         assertThat(parkingResponse.getParks().stream().map(parking -> parking.getInfo().getStatus())
                 .collect(Collectors.toList()), not(hasItems(ParkingStatus.CLOSED.toString())));
-        assertThat(parkingResponse.getParks().stream().map(parking -> parking.getInfo().getFreePlaces())
+        assertThat(parkingResponse.getParks().stream().map(parking -> parking.getInfo().getAvailableSpaces())
                 .collect(Collectors.toList()), not(hasItem(0)));
     }
 

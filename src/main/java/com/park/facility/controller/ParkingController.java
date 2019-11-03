@@ -4,6 +4,7 @@ import com.park.facility.model.ApiMessage;
 import com.park.facility.model.ParkingResponse;
 import com.park.facility.service.IParkingService;
 import com.park.facility.util.ParkingConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Parking controller represent entry point of all external calls
+ * Parking controller targeted by external calls
  *
  * @author Imad Berkati
  */
@@ -29,7 +30,7 @@ public class ParkingController {
     private IParkingService parkingService;
 
     /**
-     * Get all available car parks sorted by number of free places
+     * Get all available car parks sorted by number of available spaces
      *
      * @return {@link ParkingResponse} contains the list of car parks
      */
@@ -41,7 +42,7 @@ public class ParkingController {
             parkingResponse = parkingService.getAvailableCarParks();
             if (parkingResponse != null && CollectionUtils.isEmpty(parkingResponse.getParks())) {
                 // Add warning if parks list is empty
-                parkingResponse.addWarning(new ApiMessage("EMPTY_DATA", "There is no available parks," +
+                parkingResponse.addWarning(new ApiMessage("EMPTY_DATA", "There are no available parks," +
                         " please try later."));
             }
             return ResponseEntity.ok().body(parkingResponse);
@@ -71,7 +72,7 @@ public class ParkingController {
                     Double.valueOf(distance));
             if (parkingResponse != null && CollectionUtils.isEmpty(parkingResponse.getParks())) {
                 // Add warning if parks list is empty
-                parkingResponse.addWarning(new ApiMessage("EMPTY_DATA", "There is no parks near to you," +
+                parkingResponse.addWarning(new ApiMessage("EMPTY_DATA", "There are no parks near you," +
                         " please update your zone distance"));
             }
             return ResponseEntity.ok().body(parkingResponse);
@@ -86,7 +87,7 @@ public class ParkingController {
             parkingResponse = new ParkingResponse();
             parkingResponse.addError(new ApiMessage("CAR_PARKS_BY_ZONE_URL_GET", "Error in API: "
                     + ParkingConstants.CAR_PARKS_URL_GET));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(parkingResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(parkingResponse);
         }
     }
 }

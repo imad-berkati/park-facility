@@ -28,12 +28,12 @@ public class ParkingUtilsTest {
     public void setup() {
 
         ParkingInfo parkingInfo1 = new ParkingInfo();
-        parkingInfo1.setFreePlaces(0);
+        parkingInfo1.setAvailableSpaces(0);
         parkingInfo1.setStatus(ParkingStatus.OPENED.toString());
         park1 = new Parking();
         park1.setInfo(parkingInfo1);
         ParkingInfo parkingInfo2 = new ParkingInfo();
-        parkingInfo2.setFreePlaces(35);
+        parkingInfo2.setAvailableSpaces(35);
         parkingInfo2.setStatus(ParkingStatus.OPENED.toString());
         park2 = new Parking();
         park2.setInfo(parkingInfo2);
@@ -71,7 +71,7 @@ public class ParkingUtilsTest {
         parks.add(park3);
         TreeSet<Parking> filteredParks = ParkingUtils.filterAvailableCarParks(parks);
         assertThat(filteredParks, hasSize(1));
-        assertThat(filteredParks.first().getInfo().getFreePlaces(), greaterThan(0));
+        assertThat(filteredParks.first().getInfo().getAvailableSpaces(), greaterThan(0));
         assertThat(filteredParks.first().getInfo().getStatus(), equalTo(ParkingStatus.OPENED.toString()));
     }
 

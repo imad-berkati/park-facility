@@ -35,7 +35,7 @@ public class ParkingServiceImpl implements IParkingService {
      * Note that this method call the {@code getForObject} method from {@link RestTemplate} class to retrieve the JSON
      * response from the API and the mapping with {@link ParkingResponse} object
      *
-     * @return {@link ParkingResponse} contains the list of available car parks sorted by number of free place
+     * @return {@link ParkingResponse} contains the list of available car parks sorted by number of available spaces
      */
     @Override
     public ParkingResponse getAvailableCarParks() {
