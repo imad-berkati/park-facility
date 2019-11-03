@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Parking controller is the entry point of all external calls
+ * Parking controller represent entry point of all external calls
  *
  * @author Imad Berkati
  */
@@ -29,7 +29,7 @@ public class ParkingController {
     private IParkingService parkingService;
 
     /**
-     * Display all car parks
+     * Get all available car parks sorted by number of free places
      *
      * @return {@link ParkingResponse} contains the list of car parks
      */
@@ -53,13 +53,12 @@ public class ParkingController {
     }
 
     /**
-     * Display all car parks by zone
-     * <p>
+     * Gat all available car parks by zone, sorted by distance
      *
      * @param latitude  user location latitude
      * @param longitude user location longitude
-     * @param distance  latitude of the point 2
-     * @return {@link ParkingResponse} contains the list of car parks, sorted by the distance between user and car parks
+     * @param distance  user limit distance
+     * @return {@link ParkingResponse} contains the list of car parks
      */
     @RequestMapping(value = "/zone", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

@@ -3,6 +3,7 @@ package com.park.facility.service.impl;
 import com.park.facility.model.Parking;
 import com.park.facility.model.ParkingInfo;
 import com.park.facility.model.ParkingResponse;
+import com.park.facility.util.enums.ParkingStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -26,6 +27,9 @@ import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 
+/**
+ * @author Imad Berkati
+ */
 public class ParkingServiceImplTest {
 
     @InjectMocks
@@ -43,20 +47,23 @@ public class ParkingServiceImplTest {
         Parking gareSudParking = new Parking();
         gareSudParking.setLastUpdate(new Date());
         gareSudParking.setRecordId("ad9209d6fa7d856980bd9148abcaa0b2db9d0318");
-        gareSudParking.setInfo(new ParkingInfo("477", "Gare-Sud", "OUVERT", 964, 33,
-                Arrays.asList(48.10623522, -1.676050081), "24h/24 et 7j/7"));
+        gareSudParking.setInfo(new ParkingInfo("477", "Gare-Sud", ParkingStatus.OPENED.toString(), 964, 33, 0d,
+                0.5, 2d, 3d, 5d, 7d, 8.3d, Arrays.asList(48.10623522, -1.676050081),
+                "24h/24 et 7j/7"));
 
         Parking charlesDeGaulleParking = new Parking();
         charlesDeGaulleParking.setLastUpdate(new Date());
         charlesDeGaulleParking.setRecordId("ca59891c20f0a15267d072d9ca9a2bf488063d86");
-        charlesDeGaulleParking.setInfo(new ParkingInfo("1815", "Charles-de-gaulle", "OUVERT", 756, 11,
-                Arrays.asList(48.1025360816, -1.672518275), "7j/7"));
+        charlesDeGaulleParking.setInfo(new ParkingInfo("1815", "Charles-de-gaulle", ParkingStatus.OPENED.toString(), 756, 11,
+                0d, 1d, 2d, 3.4d, 5d, 7.8d, 8.3d, Arrays.asList(48.1025360816, -1.672518275),
+                "7j/7"));
 
         Parking colombierParking = new Parking();
         colombierParking.setLastUpdate(new Date());
         colombierParking.setRecordId("3d5878b8b18ed96b72f18a24484aaec776b82e92");
-        colombierParking.setInfo(new ParkingInfo("310", "Colombier", "OUVERT", 1115, 0,
-                Arrays.asList(48.10476252, -1.678624547), "24h/24 et 7j/7"));
+        colombierParking.setInfo(new ParkingInfo("310", "Colombier", ParkingStatus.OPENED.toString(), 1115, 0, 005d,
+                0.8, 2d, 3d, 5.5d, 7d, 10d, Arrays.asList(48.10476252, -1.678624547),
+                "24h/24 et 7j/7"));
 
         TreeSet<Parking> carParks = new TreeSet<>();
         carParks.add(charlesDeGaulleParking);

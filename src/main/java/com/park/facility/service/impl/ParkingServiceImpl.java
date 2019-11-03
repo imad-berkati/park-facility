@@ -19,7 +19,7 @@ import java.util.TreeSet;
 import java.util.function.Predicate;
 
 /**
- * The implementation of the {@link IParkingService} interface
+ * Implementation of the {@link IParkingService} interface
  *
  * @author Imad Berkati
  */
@@ -30,10 +30,10 @@ public class ParkingServiceImpl implements IParkingService {
     private RestTemplate restTemplate;
 
     /**
-     * Retrieve all car parks by doing a GET request on the {@literal Rennes car parks} API
+     * Retrieve all available car parks by doing a GET request on the {@literal Rennes car parks} API.
      * <p>
-     * Note that this method call the {@code getForObject} method from {@link RestTemplate} class to get the JSON
-     * response from the API and do the mapping with {@link ParkingResponse} object
+     * Note that this method call the {@code getForObject} method from {@link RestTemplate} class to retrieve the JSON
+     * response from the API and the mapping with {@link ParkingResponse} object
      *
      * @return {@link ParkingResponse} contains the list of available car parks sorted by number of free place
      */
@@ -51,11 +51,11 @@ public class ParkingServiceImpl implements IParkingService {
     }
 
     /**
-     * Retrieve all car parks by zone (latitude, longitude and distance) doing a GET request on the
+     * Retrieve all available car parks by zone (latitude, longitude and distance) doing a GET request on the
      * {@literal Rennes car parks} API using {@code geofilter.distance} query parameter.
      * <p>
      * The zone is represented as a circle, The latitude and longitude are the location center and the distance
-     * is his radius
+     * is the radius
      * <p>
      * Note that this method call the {@code getForObject} method from {@link RestTemplate} class to get the JSON
      * response from the API and do the mapping with {@link ParkingResponse} object.

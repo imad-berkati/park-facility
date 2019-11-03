@@ -2,20 +2,21 @@ package com.park.facility.util;
 
 import com.park.facility.model.Parking;
 import com.park.facility.util.enums.DistanceUnit;
+import com.park.facility.util.enums.ParkingStatus;
 import org.springframework.util.CollectionUtils;
 
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
 /**
- * This abstract class provides several GeoLocation utility methods
+ * This abstract class contains several utility methods
  *
  * @author Imad Berkati
  */
 public abstract class ParkingUtils {
 
     /**
-     * Calculate the distance between two points (lat,long)
+     * Calculate the distance between two locations
      *
      * @param latitudePoint1  latitude of the point 1
      * @param longitudePoint1 longitude of the point 1
@@ -23,7 +24,7 @@ public abstract class ParkingUtils {
      * @param longitudePoint2 longitude of the point 2
      * @param unit            {@link DistanceUnit} unit of returned distance
      * @return {@code double} distance between two locations
-     * @throws IllegalArgumentException if one of parameters is null or unit parameter is out of enum scope
+     * @throws IllegalArgumentException if one of longitudes is null or unit parameter is out of enum scope
      */
     public static double getDistanceBetweenTwoPoints(Double latitudePoint1, Double longitudePoint1, Double latitudePoint2,
                                                      Double longitudePoint2, DistanceUnit unit) throws IllegalArgumentException {
@@ -50,7 +51,7 @@ public abstract class ParkingUtils {
     }
 
     /**
-     * Filter available parks
+     * Filter available parks by free places and status
      *
      * @param parks list of car parks
      * @return {@code TreeSet} available car parks
@@ -58,7 +59,7 @@ public abstract class ParkingUtils {
     public static TreeSet<Parking> filterAvailableCarParks(TreeSet<Parking> parks) {
         if (!CollectionUtils.isEmpty(parks)) {
             Predicate<Parking> availableParksPredicate = (parking -> parking.getInfo() == null
-                    || parking.getInfo().getFreePlaces() == 0 || !"OUVERT".equals(parking.getInfo().getStatus()));
+                    || parking.getInfo().getFreePlaces() == 0 || ! ParkingStatus.OPENED.toString().equals(parking.getInfo().getStatus()));
             parks.removeIf(availableParksPredicate);
             return parks;
         }

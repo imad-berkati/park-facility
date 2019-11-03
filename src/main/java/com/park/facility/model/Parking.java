@@ -59,4 +59,5 @@ public class Parking implements Comparable<Parking> {
         }
         return result;
     }
+
 }
