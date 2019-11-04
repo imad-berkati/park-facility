@@ -297,7 +297,8 @@ TODO list by priority:
 * Update the keys in the JSON response.
 * Create custom exceptions.
 * Add Logs.  
-* Secure the API by using HTTPS.
+* Secure the API by using HTTPS.  
+* Add Jacoco library for test reports.
 
 ## Contact
 Contact: berkati.imad@gmail.com
