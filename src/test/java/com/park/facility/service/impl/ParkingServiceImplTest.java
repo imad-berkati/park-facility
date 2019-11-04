@@ -83,8 +83,8 @@ public class ParkingServiceImplTest {
         assertThat(parkingResponse.getErrors(), nullValue());
         assertThat(parkingResponse.getParksCount(), comparesEqualTo(2));
         assertThat(parkingResponse.getParks(), hasSize(2));
-        assertThat(parkingResponse.getParks().first().getInfo().getFreePlaces(), greaterThan(parkingResponse.getParks()
-                .last().getInfo().getFreePlaces()));
+        assertThat(parkingResponse.getParks().first().getInfo().getAvailableSpaces(), greaterThan(parkingResponse.getParks()
+                .last().getInfo().getAvailableSpaces()));
         parkingResponse.getParks().forEach(parking -> assertThat(parking.getDistance(), nullValue()));
     }
 

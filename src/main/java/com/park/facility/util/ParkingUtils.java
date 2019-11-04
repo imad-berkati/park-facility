@@ -51,7 +51,7 @@ public abstract class ParkingUtils {
     }
 
     /**
-     * Filter available parks by free places and status
+     * Filter available parks by available spaces and status
      *
      * @param parks list of car parks
      * @return {@code TreeSet} available car parks
@@ -59,7 +59,7 @@ public abstract class ParkingUtils {
     public static TreeSet<Parking> filterAvailableCarParks(TreeSet<Parking> parks) {
         if (!CollectionUtils.isEmpty(parks)) {
             Predicate<Parking> availableParksPredicate = (parking -> parking.getInfo() == null
-                    || parking.getInfo().getFreePlaces() == 0 || ! ParkingStatus.OPENED.toString().equals(parking.getInfo().getStatus()));
+                    || parking.getInfo().getAvailableSpaces() == 0 || ! ParkingStatus.OPENED.toString().equals(parking.getInfo().getStatus()));
             parks.removeIf(availableParksPredicate);
             return parks;
         }

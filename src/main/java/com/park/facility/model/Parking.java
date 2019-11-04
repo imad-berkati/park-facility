@@ -44,15 +44,15 @@ public class Parking implements Comparable<Parking> {
     private Double distance;
 
     /**
-     * The default compare is by free places
+     * The default compare is by available spaces
      * Note that the compareTo can compare also by distance if it's not null
      */
     @Override
     public int compareTo(Parking o) {
         int result = 0;
-        if (this.getInfo() != null && o.getInfo() != null && this.getInfo().getFreePlaces() != null
-                && o.getInfo().getFreePlaces() != null) {
-            result = o.getInfo().getFreePlaces() - this.getInfo().getFreePlaces();
+        if (this.getInfo() != null && o.getInfo() != null && this.getInfo().getAvailableSpaces() != null
+                && o.getInfo().getAvailableSpaces() != null) {
+            result = o.getInfo().getAvailableSpaces() - this.getInfo().getAvailableSpaces();
         }
         if (this.distance != null && o.distance != null) {
             result = this.getDistance().intValue() - o.getDistance().intValue();

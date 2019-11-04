@@ -35,16 +35,16 @@ public class ParkingInfo {
     private String status;
 
     /**
-     * Parking places capacity
+     * Parking spaces capacity
      */
     @JsonProperty("max")
     private Integer capacity;
 
     /**
-     * number of free places
+     * number of available spaces
      */
     @JsonProperty("free")
-    private Integer freePlaces;
+    private Integer availableSpaces;
 
     /**
      * price for 15 minutes
@@ -105,14 +105,14 @@ public class ParkingInfo {
 
     }
 
-    public ParkingInfo(String id, String name, String status, Integer capacity, Integer freePlaces, Double price0H15,
+    public ParkingInfo(String id, String name, String status, Integer capacity, Integer availableSpaces, Double price0H15,
                        Double price0H30, Double price1H00, Double price1H30, Double price2H00, Double price3H00,
                        Double price4H00, List<Double> coordinates, String scheduleDescription) {
         this.id = id;
         this.name = name;
         this.status = status;
         this.capacity = capacity;
-        this.freePlaces = freePlaces;
+        this.availableSpaces = availableSpaces;
         this.price0H15 = price0H15;
         this.price0H30 = price0H30;
         this.price1H00 = price1H00;
